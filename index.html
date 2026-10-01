@@ -169,7 +169,6 @@ button {
   border: 8px solid white;
   box-shadow: 0 7px 20px rgba(0,0,0,.15);
   overflow: hidden;
-  /* 7等分（每格約 51.4285度），從 -25.714度起算讓第0格正好居中在正上方（0度） */
   background: conic-gradient(
     from -25.714deg,
     #ffd166 0deg 51.428deg,
@@ -484,7 +483,7 @@ button {
   <!-- 5. 小動物養成 -->
   <section id="petGame" class="game">
     <h2>🐣 小動物養成</h2>
-    <div class="description">累積寫字，小夥伴就會一步一步長大！</div>
+    <div class="description">累積寫字，小雞就會一步一步長大成帥氣大公雞！</div>
     <div class="pet" id="pet">🥚</div>
     <div class="pet-message" id="petMessage">累積寫滿 10 個字，就可以孵化小蛋！</div>
     <div class="progress-box">
@@ -534,15 +533,13 @@ function showGame(id, button) {
 }
 
 /* =====================================================
-   1. 轉盤 (精準角度校正)
+   1. 轉盤
 ===================================================== */
 const wheel = document.getElementById("wheelElement");
 const wheelNumbers = document.querySelectorAll(".wheel-number");
-const sector = 360 / 7; // 約 51.42857 度
+const sector = 360 / 7;
 const wheelRadius = 105;
 
-// 將數字 0 ~ 6 分佈在 7 個扇形的正中心
-// 0 在正上方 (0度 / -90度在極座標系統)，順時針遞增
 wheelNumbers.forEach((numEl, index) => {
   const angleDeg = index * sector;
   const rad = (angleDeg - 90) * (Math.PI / 180);
@@ -558,12 +555,7 @@ function spinWheel() {
   if (spinning) return;
   spinning = true;
 
-  // 隨機抽 0 ~ 6
   const luckyNumber = Math.floor(Math.random() * 7);
-
-  // 指針在正頂端（0度）。若要讓 luckyNumber 轉到正頂端：
-  // 轉盤本身需要旋轉的角度為 -luckyNumber * sector (模 360)。
-  // 計算下一次旋轉至少轉 5 圈 (1800deg) 並落在此角度：
   const targetModAngle = (360 - (luckyNumber * sector) % 360) % 360;
   const currentModAngle = (currentWheelRotation % 360 + 360) % 360;
   let delta = targetModAngle - currentModAngle;
@@ -696,18 +688,18 @@ function resetMonster() {
 }
 
 /* =====================================================
-   5. 小動物養成
+   5. 小動物養成（咕咕雞路線）
 ===================================================== */
-const pets = ["🥚", "🐣", "🐥", "🐤", "🐦", "🦜"];
+const pets = ["🥚", "🐣", "🐥", "🐤", "🐔", "🐓"];
 const petMessages = [
   "再寫幾個字，就可以孵化小蛋！",
   "太棒了！小雞破殼出生了！🌱",
-  "小夥伴吃得很飽，長大了一點！",
-  "活力滿滿，小夥伴開始會跑動了！",
-  "羽毛變漂亮了，快要完全長大囉！✨",
-  "🎉 恭喜！小夥伴完全長大成熟了！"
+  "小雞吃得很飽，毛茸茸圓滾滾！",
+  "活力滿滿，小雞開始到處跑跳探索！",
+  "羽翼漸豐，小雞長成大雞囉！✨",
+  "🎉 恭喜！小雞完全長大成為霸氣大公雞！🐓"
 ];
-const petFood = ["🥚", "🍎", "🥕", "🍓", "🌽", "🍉"];
+const petFood = ["🥚", "🌾", "🌽", "🐛", "🌾", "✨"];
 const petMaxWords = 50;
 let totalPetWords = 0;
 
@@ -732,11 +724,11 @@ function feedPetByInput() {
   input.value = "";
   if (words === 0) {
     document.getElementById("petResult").innerHTML =
-      "🍀 幸運休息站！<br><strong>休息 1 分鐘，小夥伴陪你一起休息 🐣</strong>";
+      "🍀 幸運休息站！<br><strong>休息 1 分鐘，小雞陪你一起休息 🐣</strong>";
     return;
   }
   if (totalPetWords >= petMaxWords) {
-    document.getElementById("petResult").innerHTML = "🏆 小夥伴已經完全長大了！";
+    document.getElementById("petResult").innerHTML = "🏆 大公雞已經完全長大了！";
     return;
   }
 
@@ -749,11 +741,11 @@ function feedPetByInput() {
 
   if (totalPetWords >= petMaxWords) {
     document.getElementById("petResult").innerHTML =
-      `🎉 ${food} 這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br><strong>小夥伴完全長大了！🌟</strong>`;
+      `🎉 ${food} 這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br><strong>小雞成功長成大公雞了！🐓🌟</strong>`;
   } else {
     const nextTarget = (stage + 1) * 10;
     document.getElementById("petResult").innerHTML =
-      `${food} 這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br>再寫 ${nextTarget - totalPetWords} 個字，小夥伴就會長大囉！`;
+      `${food} 這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br>再寫 ${nextTarget - totalPetWords} 個字，小雞就會長大囉！`;
   }
 }
 
@@ -761,7 +753,7 @@ function resetPet() {
   totalPetWords = 0;
   document.getElementById("petInput").value = "";
   updatePetStage();
-  document.getElementById("petResult").innerHTML = "🌱 寫幾個字來餵食小夥伴吧！";
+  document.getElementById("petResult").innerHTML = "🌱 寫幾個字來餵食小雞吧！";
 }
 
 /* =====================================================
