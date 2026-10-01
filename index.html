@@ -48,7 +48,7 @@ h1 {
   border: none;
   background: white;
   border-radius: 18px;
-  padding: 10px 14px;
+  padding: 10px 16px;
   font-size: 15px;
   box-shadow: 0 3px 10px rgba(0,0,0,.08);
 }
@@ -93,9 +93,7 @@ button {
   transform: translateY(4px);
   box-shadow: 0 1px 0 #df9432;
 }
-/* =========================
-   通用輸入
-========================= */
+/* 通用輸入 */
 .word-input-area {
   text-align: center;
   margin: 20px auto;
@@ -153,13 +151,13 @@ button {
 .pointer {
   position: absolute;
   z-index: 10;
-  top: -12px;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
   border-top: 32px solid #ff4757;
   filter: drop-shadow(0 3px 3px rgba(0,0,0,.25));
 }
@@ -171,26 +169,27 @@ button {
   border: 8px solid white;
   box-shadow: 0 7px 20px rgba(0,0,0,.15);
   overflow: hidden;
+  /* 7等分（每格約 51.4285度），從 -25.714度起算讓第0格正好居中在正上方（0度） */
   background: conic-gradient(
     from -25.714deg,
     #ffd166 0deg 51.428deg,
-    #ff9f9f 51.428deg 102.856deg,
-    #8fd694 102.856deg 154.284deg,
-    #8ecae6 154.284deg 205.712deg,
-    #cdb4db 205.712deg 257.140deg,
-    #ffb4a2 257.140deg 308.568deg,
-    #a8dadc 308.568deg 360deg
+    #ff9f9f 51.428deg 102.857deg,
+    #8fd694 102.857deg 154.285deg,
+    #8ecae6 154.285deg 205.714deg,
+    #cdb4db 205.714deg 257.142deg,
+    #ffb4a2 257.142deg 308.571deg,
+    #a8dadc 308.571deg 360deg
   );
-  transition: transform 4s cubic-bezier(.12,.8,.18,1);
+  transition: transform 4s cubic-bezier(0.15, 0.9, 0.2, 1);
 }
 .wheel-number {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 48px;
-  height: 48px;
-  margin-left: -24px;
-  margin-top: -24px;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  margin-top: -22px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -198,23 +197,23 @@ button {
   font-weight: 900;
   color: white;
   text-shadow: 0 2px 4px rgba(0,0,0,.35);
-  transform-origin: center;
 }
 .wheel-center {
   position: absolute;
   z-index: 5;
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: white;
+  background: radial-gradient(circle, #ffffff 60%, #fff2cc 100%);
+  border: 4px solid #ffd166;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
-  box-shadow: 0 3px 10px rgba(0,0,0,.15);
+  font-size: 26px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.15);
 }
 /* =========================
    2. 翻牌
@@ -354,84 +353,7 @@ button {
   transition: width .4s;
 }
 /* =========================
-   5. 台北到南部火車
-========================= */
-.train-map {
-  position: relative;
-  height: 270px;
-  margin: 20px 0;
-  background:
-    linear-gradient(180deg, #dff5ff 0%, #f5fcff 58%, #b9e59b 58%, #8dcc70 100%);
-  border-radius: 25px;
-  overflow: hidden;
-}
-.train-map::before {
-  content: "☁️        ☁️              ☁️";
-  position: absolute;
-  top: 18px;
-  left: 8%;
-  right: 8%;
-  color: white;
-  font-size: 28px;
-  letter-spacing: 12px;
-  white-space: nowrap;
-}
-.track {
-  position: absolute;
-  left: 7%;
-  right: 7%;
-  top: 155px;
-  height: 12px;
-  background: #777;
-  border-radius: 10px;
-  box-shadow: 0 8px 0 rgba(255,255,255,.7);
-}
-.stations {
-  position: absolute;
-  left: 7%;
-  right: 7%;
-  top: 132px;
-  display: flex;
-  justify-content: space-between;
-  z-index: 2;
-}
-.station-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70px;
-  transform: translateX(-18px);
-}
-.station {
-  width: 38px;
-  height: 38px;
-  background: white;
-  border: 4px solid #777;
-  border-radius: 50%;
-}
-.station-name {
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: bold;
-  white-space: nowrap;
-  color: #4a4038;
-}
-.train {
-  position: absolute;
-  z-index: 4;
-  font-size: 55px;
-  top: 82px;
-  left: 2%;
-  transition: left .7s cubic-bezier(.2,.8,.2,1);
-}
-.train-route {
-  text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
-  color: #5d6d75;
-}
-/* =========================
-   6. 小動物
+   5. 小動物養成
 ========================= */
 .pet {
   text-align: center;
@@ -466,7 +388,7 @@ button {
   border-radius: 20px;
   transition: width .4s;
 }
-/* 通用 */
+/* 通用控制 */
 .reset-btn {
   display: block;
   margin: 15px auto 0;
@@ -477,34 +399,12 @@ button {
   border-radius: 20px;
 }
 @media(max-width:480px) {
-  h1 {
-    font-size: 29px;
-  }
-  .game {
-    padding: 17px 10px 22px;
-  }
-  .card {
-    height: 105px;
-  }
-  .ribbon-maze {
-    height: 370px;
-  }
-  .word-input {
-    width: 110px;
-  }
-  .submit-word-btn {
-    margin-top: 10px;
-  }
-  .station-wrap {
-    width: 55px;
-    transform: translateX(-12px);
-  }
-  .station-name {
-    font-size: 12px;
-  }
-  .train {
-    font-size: 48px;
-  }
+  h1 { font-size: 29px; }
+  .game { padding: 17px 10px 22px; }
+  .card { height: 105px; }
+  .ribbon-maze { height: 370px; }
+  .word-input { width: 110px; }
+  .submit-word-btn { margin-top: 10px; }
 }
 </style>
 </head>
@@ -517,231 +417,90 @@ button {
     <button class="tab" onclick="showGame('cards',this)">🃏 翻牌</button>
     <button class="tab" onclick="showGame('ribbonGame',this)">🎀 選緞帶</button>
     <button class="tab" onclick="showGame('monsterGame',this)">🐉 打怪</button>
-    <button class="tab" onclick="showGame('trainGame',this)">🚂 火車</button>
     <button class="tab" onclick="showGame('petGame',this)">🐣 養成</button>
   </div>
-  <!-- =========================
-       1. 轉盤
-  ========================= -->
+
+  <!-- 1. 轉盤 -->
   <section id="wheel" class="game active">
-<h2>🎡 幸運轉盤</h2>
-<div class="description">
-  轉一轉，指針對準哪個數字就寫幾個字！
-</div>
-<div class="wheel-area">
-  <div class="wheel-wrapper">
-    <div class="pointer"></div>
-    <div class="wheel" id="wheelElement">
-      <div class="wheel-number">0</div>
-      <div class="wheel-number">1</div>
-      <div class="wheel-number">2</div>
-      <div class="wheel-number">3</div>
-      <div class="wheel-number">4</div>
-      <div class="wheel-number">5</div>
-      <div class="wheel-number">6</div>
-      <div class="wheel-center">🌈</div>
+    <h2>🎡 幸運轉盤</h2>
+    <div class="description">轉一轉，指針對準哪個數字就寫幾個字！</div>
+    <div class="wheel-area">
+      <div class="wheel-wrapper">
+        <div class="pointer"></div>
+        <div class="wheel" id="wheelElement">
+          <div class="wheel-number">0</div>
+          <div class="wheel-number">1</div>
+          <div class="wheel-number">2</div>
+          <div class="wheel-number">3</div>
+          <div class="wheel-number">4</div>
+          <div class="wheel-number">5</div>
+          <div class="wheel-number">6</div>
+          <div class="wheel-center">🌟</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div style="text-align:center;">
-  <button class="main-btn" onclick="spinWheel()">
-    🎡 開始轉！
-  </button>
-</div>
-<div class="result" id="wheelResult">
-  🌟 準備好了嗎？點擊開始轉動！
-</div>
+    <div style="text-align:center;">
+      <button class="main-btn" onclick="spinWheel()">🎡 開始轉！</button>
+    </div>
+    <div class="result" id="wheelResult">🌟 準備好了嗎？點擊開始轉動！</div>
   </section>
-  <!-- =========================
-       2. 翻牌
-  ========================= -->
+
+  <!-- 2. 翻牌 -->
   <section id="cards" class="game">
-<h2>🃏 神秘翻牌</h2>
-<div class="description">
-  選一張卡片，看看這次要寫幾個字！
-</div>
-<div class="cards" id="cardContainer"></div>
-<div class="result" id="cardResult">
-  🍀 選一張神秘卡片吧！
-</div>
-<button class="reset-btn" onclick="createCards()">
-  🔄 重新洗牌
-</button>
+    <h2>🃏 神秘翻牌</h2>
+    <div class="description">選一張卡片，看看這次要寫幾個字！</div>
+    <div class="cards" id="cardContainer"></div>
+    <div class="result" id="cardResult">🍀 選一張神秘卡片吧！</div>
+    <button class="reset-btn" onclick="createCards()">🔄 重新洗牌</button>
   </section>
-  <!-- =========================
-       3. 緞帶
-  ========================= -->
+
+  <!-- 3. 緞帶 -->
   <section id="ribbonGame" class="game">
-<h2>🎀 緞帶選線</h2>
-<div class="description">
-  選一條幸運線，看看線條後面藏了幾個字！
-</div>
-<div class="ribbon-maze" id="ribbonMaze"></div>
-<div class="result" id="ribbonResult">
-  🎯 點選一條緞帶看看吧！
-</div>
-<button class="reset-btn" onclick="createRibbons()">
-  🔄 重新整理緞帶
-</button>
+    <h2>🎀 緞帶選線</h2>
+    <div class="description">選一條幸運線，看看線條後面藏了幾個字！</div>
+    <div class="ribbon-maze" id="ribbonMaze"></div>
+    <div class="result" id="ribbonResult">🎯 點選一條緞帶看看吧！</div>
+    <button class="reset-btn" onclick="createRibbons()">🔄 重新整理緞帶</button>
   </section>
-  <!-- =========================
-       4. 打怪
-  ========================= -->
+
+  <!-- 4. 打怪 -->
   <section id="monsterGame" class="game">
-<h2>🐉 打怪任務</h2>
-<div class="description">
-  每寫一個字，就對怪獸造成 1 點傷害！
-</div>
-<div class="monster" id="monster">
-  🐲
-</div>
-<div class="hp-box">
-  <div class="hp-label">
-    ❤️ 怪獸剩餘體力：
-    <span id="hpText">30</span> / 30
-  </div>
-  <div class="hp-bar">
-    <div class="hp" id="hpBar"></div>
-  </div>
-</div>
-<div class="word-input-area">
-  <div class="word-input-label">
-    ✏️ 這次寫了幾個字？
-  </div>
-  <input
-    id="monsterInput"
-    class="word-input"
-    type="number"
-    min="0"
-    placeholder="例如 8"
-  >
-  <button
-    class="submit-word-btn"
-    onclick="attackByInput()"
-  >
-    ⚔️ 攻擊
-  </button>
-</div>
-<div class="result" id="monsterResult">
-  💪 寫幾個字，就造成幾點傷害！
-</div>
-<button class="reset-btn" onclick="resetMonster()">
-  🔄 重新開始挑戰
-</button>
+    <h2>🐉 打怪任務</h2>
+    <div class="description">每寫一個字，就對怪獸造成 1 點傷害！</div>
+    <div class="monster" id="monster">🐲</div>
+    <div class="hp-box">
+      <div class="hp-label">❤️ 怪獸剩餘體力：<span id="hpText">30</span> / 30</div>
+      <div class="hp-bar"><div class="hp" id="hpBar"></div></div>
+    </div>
+    <div class="word-input-area">
+      <div class="word-input-label">✏️ 這次寫了幾個字？</div>
+      <input id="monsterInput" class="word-input" type="number" min="0" placeholder="例如 8">
+      <button class="submit-word-btn" onclick="attackByInput()">⚔️ 攻擊</button>
+    </div>
+    <div class="result" id="monsterResult">💪 寫幾個字，就造成幾點傷害！</div>
+    <button class="reset-btn" onclick="resetMonster()">🔄 重新開始挑戰</button>
   </section>
-  <!-- =========================
-       5. 台北到南部火車
-  ========================= -->
-  <section id="trainGame" class="game">
-<h2>🚂 台北到南部小火車</h2>
-<div class="description">
-  每寫滿 5 個字，火車就前進一站，從台北一路開到南部！
-</div>
-<div class="train-map">
-  <div class="track"></div>
-  <div class="stations">
-    <div class="station-wrap">
-      <div class="station"></div>
-      <div class="station-name">台北</div>
-    </div>
-    <div class="station-wrap">
-      <div class="station"></div>
-      <div class="station-name">新竹</div>
-    </div>
-    <div class="station-wrap">
-      <div class="station"></div>
-      <div class="station-name">台中</div>
-    </div>
-    <div class="station-wrap">
-      <div class="station"></div>
-      <div class="station-name">嘉義</div>
-    </div>
-    <div class="station-wrap">
-      <div class="station"></div>
-      <div class="station-name">高雄</div>
-    </div>
-  </div>
-  <div class="train" id="train">
-    🚂
-  </div>
-</div>
-<div class="train-route">
-  台北 🚉 → 新竹 🚉 → 台中 🚉 → 嘉義 🚉 → 高雄 🚉
-</div>
-<div class="result" id="trainResult">
-  🏁 火車準備從台北出發！
-</div>
-<div class="word-input-area">
-  <div class="word-input-label">
-    ✏️ 這次寫了幾個字？
-  </div>
-  <input
-    id="trainInput"
-    class="word-input"
-    type="number"
-    min="0"
-    placeholder="例如 7"
-  >
-  <button
-    class="submit-word-btn"
-    onclick="trainByInput()"
-  >
-    🚂 出發
-  </button>
-</div>
-<button class="reset-btn" onclick="resetTrain()">
-  🔄 回到台北
-</button>
-  </section>
-  <!-- =========================
-       6. 小動物養成
-  ========================= -->
+
+  <!-- 5. 小動物養成 -->
   <section id="petGame" class="game">
-<h2>🐣 小動物養成</h2>
-<div class="description">
-  累積寫字，小夥伴就會一步一步長大！
-</div>
-<div class="pet" id="pet">
-  🥚
-</div>
-<div class="pet-message" id="petMessage">
-  累積寫滿 10 個字，就可以孵化小蛋！
-</div>
-<div class="progress-box">
-  <div class="progress-label">
-    🌱 成長進度：
-    <span id="petWords">0</span> / 50 字
-  </div>
-  <div class="progress-bar">
-    <div class="progress" id="petProgress"></div>
-  </div>
-</div>
-<div class="word-input-area">
-  <div class="word-input-label">
-    ✏️ 這次寫了幾個字？
-  </div>
-  <input
-    id="petInput"
-    class="word-input"
-    type="number"
-    min="0"
-    placeholder="例如 7"
-  >
-  <button
-    class="submit-word-btn"
-    onclick="feedPetByInput()"
-  >
-    🥕 餵食
-  </button>
-</div>
-<div class="result" id="petResult">
-  🌱 寫幾個字來餵食小夥伴吧！
-</div>
-<button class="reset-btn" onclick="resetPet()">
-  🔄 重新孵蛋
-</button>
+    <h2>🐣 小動物養成</h2>
+    <div class="description">累積寫字，小夥伴就會一步一步長大！</div>
+    <div class="pet" id="pet">🥚</div>
+    <div class="pet-message" id="petMessage">累積寫滿 10 個字，就可以孵化小蛋！</div>
+    <div class="progress-box">
+      <div class="progress-label">🌱 成長進度：<span id="petWords">0</span> / 50 字</div>
+      <div class="progress-bar"><div class="progress" id="petProgress"></div></div>
+    </div>
+    <div class="word-input-area">
+      <div class="word-input-label">✏️ 這次寫了幾個字？</div>
+      <input id="petInput" class="word-input" type="number" min="0" placeholder="例如 7">
+      <button class="submit-word-btn" onclick="feedPetByInput()">🥕 餵食</button>
+    </div>
+    <div class="result" id="petResult">🌱 寫幾個字來餵食小夥伴吧！</div>
+    <button class="reset-btn" onclick="resetPet()">🔄 重新孵蛋</button>
   </section>
 </div>
+
 <script>
 /* =====================================================
    共用
@@ -754,414 +513,192 @@ const encouragements = [
   "🎉 這次一定可以！",
   "❤️ 慢慢寫，你做得到！"
 ];
+
 function randomEncouragement() {
-  return encouragements[
-    Math.floor(Math.random() * encouragements.length)
-  ];
+  return encouragements[Math.floor(Math.random() * encouragements.length)];
 }
+
 function showResult(element, number) {
   if (number === 0) {
-    element.innerHTML =
-      "🍀 幸運休息站！<br>" +
-      "<strong>休息 1 分鐘，不用寫字 🎉</strong>";
+    element.innerHTML = "🍀 幸運休息站！<br><strong>休息 1 分鐘，不用寫字 🎉</strong>";
   } else {
-    element.innerHTML =
-      randomEncouragement() +
-      "<br><strong>這次寫 " +
-      number +
-      " 個字！✏️</strong>";
+    element.innerHTML = `${randomEncouragement()}<br><strong>這次寫 ${number} 個字！✏️</strong>`;
   }
 }
+
 function showGame(id, button) {
-  document.querySelectorAll(".game")
-    .forEach(g => g.classList.remove("active"));
-  document.querySelectorAll(".tab")
-    .forEach(t => t.classList.remove("active"));
-  document.getElementById(id)
-    .classList.add("active");
+  document.querySelectorAll(".game").forEach(g => g.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
   button.classList.add("active");
 }
+
 /* =====================================================
-   1. 轉盤
+   1. 轉盤 (精準角度校正)
 ===================================================== */
 const wheel = document.getElementById("wheelElement");
-const wheelNumbers =
-  document.querySelectorAll(".wheel-number");
-const sector = 360 / 7;
+const wheelNumbers = document.querySelectorAll(".wheel-number");
+const sector = 360 / 7; // 約 51.42857 度
 const wheelRadius = 105;
-/*
-  7 個格子完全平均分配，每格 360 / 7 度。
-  轉盤的第一格 0 的中心固定在正上方，
-  其他數字依照順時針方向排列。
-*/
+
+// 將數字 0 ~ 6 分佈在 7 個扇形的正中心
+// 0 在正上方 (0度 / -90度在極座標系統)，順時針遞增
 wheelNumbers.forEach((numEl, index) => {
-  const angleDeg =
-    index * sector;
-  const rad =
-    (angleDeg - 90) *
-    (Math.PI / 180);
-  const x =
-    Math.cos(rad) *
-    wheelRadius;
-  const y =
-    Math.sin(rad) *
-    wheelRadius;
-  numEl.style.transform =
-    `translate(${x}px, ${y}px)`;
+  const angleDeg = index * sector;
+  const rad = (angleDeg - 90) * (Math.PI / 180);
+  const x = Math.cos(rad) * wheelRadius;
+  const y = Math.sin(rad) * wheelRadius;
+  numEl.style.transform = `translate(${x}px, ${y}px)`;
 });
+
 let currentWheelRotation = 0;
 let spinning = false;
+
 function spinWheel() {
   if (spinning) return;
   spinning = true;
-  /*
-    先決定結果，再讓轉盤轉到相同數字。
-    因為 0 的中心在正上方，
-    所以最後旋轉角度使用：
-    - luckyNumber * sector
-  */
-  const luckyNumber =
-    Math.floor(Math.random() * 7);
-  const fullSpins = 5;
-  const targetRotation =
-    fullSpins * 360 -
-    luckyNumber * sector;
-  currentWheelRotation += targetRotation;
-  wheel.style.transform =
-    `rotate(${currentWheelRotation}deg)`;
+
+  // 隨機抽 0 ~ 6
+  const luckyNumber = Math.floor(Math.random() * 7);
+
+  // 指針在正頂端（0度）。若要讓 luckyNumber 轉到正頂端：
+  // 轉盤本身需要旋轉的角度為 -luckyNumber * sector (模 360)。
+  // 計算下一次旋轉至少轉 5 圈 (1800deg) 並落在此角度：
+  const targetModAngle = (360 - (luckyNumber * sector) % 360) % 360;
+  const currentModAngle = (currentWheelRotation % 360 + 360) % 360;
+  let delta = targetModAngle - currentModAngle;
+  if (delta <= 0) {
+    delta += 360;
+  }
+  
+  const totalSpin = 5 * 360 + delta;
+  currentWheelRotation += totalSpin;
+
+  wheel.style.transform = `rotate(${currentWheelRotation}deg)`;
+
   setTimeout(() => {
-    showResult(
-      document.getElementById("wheelResult"),
-      luckyNumber
-    );
+    showResult(document.getElementById("wheelResult"), luckyNumber);
     spinning = false;
   }, 4100);
 }
+
 /* =====================================================
    2. 翻牌
 ===================================================== */
-const cardValues =
-  [0, 1, 2, 3, 4, 5, 6, 8, 10];
+const cardValues = [0, 1, 2, 3, 4, 5, 6, 8, 10];
+
 function shuffle(array) {
-  return array.sort(
-    () => Math.random() - .5
-  );
+  return array.sort(() => Math.random() - .5);
 }
+
 function createCards() {
-  const container =
-    document.getElementById("cardContainer");
+  const container = document.getElementById("cardContainer");
   container.innerHTML = "";
-  const values =
-    shuffle([...cardValues]);
+  const values = shuffle([...cardValues]);
   values.forEach(value => {
-    const card =
-      document.createElement("div");
+    const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
       <div class="card-inner">
-        <div class="card-front">
-          ❓
-        </div>
-        <div class="card-back">
-          ${value}
-        </div>
+        <div class="card-front">❓</div>
+        <div class="card-back">${value}</div>
       </div>
     `;
     card.onclick = function() {
-      if (
-        card.classList.contains("flipped")
-      ) return;
+      if (card.classList.contains("flipped")) return;
       card.classList.add("flipped");
       setTimeout(() => {
-        showResult(
-          document.getElementById(
-            "cardResult"
-          ),
-          value
-        );
+        showResult(document.getElementById("cardResult"), value);
       }, 400);
     };
     container.appendChild(card);
   });
 }
 createCards();
+
 /* =====================================================
    3. 緞帶
 ===================================================== */
-const ribbonColors = [
-  "#ff7675",
-  "#74b9ff",
-  "#55efc4",
-  "#a29bfe",
-  "#ffeaa7",
-  "#fab1a0"
-];
-const wordPool =
-  [0, 1, 2, 3, 4, 5, 6, 7];
+const ribbonColors = ["#ff7675", "#74b9ff", "#55efc4", "#a29bfe", "#ffeaa7", "#fab1a0"];
+const wordPool = [0, 1, 2, 3, 4, 5, 6, 7];
+
 function createRibbons() {
-  const maze =
-    document.getElementById("ribbonMaze");
+  const maze = document.getElementById("ribbonMaze");
   maze.innerHTML = "";
-  document.getElementById(
-    "ribbonResult"
-  ).innerHTML =
-    "🎯 點選一條緞帶看看吧！";
+  document.getElementById("ribbonResult").innerHTML = "🎯 點選一條緞帶看看吧！";
   for (let i = 0; i < 5; i++) {
-    const line =
-      document.createElement("div");
-    line.className =
-      "ribbon-line";
-    line.style.background =
-      ribbonColors[
-        i % ribbonColors.length
-      ];
-    const words =
-      wordPool[
-        Math.floor(
-          Math.random() *
-          wordPool.length
-        )
-      ];
+    const line = document.createElement("div");
+    line.className = "ribbon-line";
+    line.style.background = ribbonColors[i % ribbonColors.length];
+    const words = wordPool[Math.floor(Math.random() * wordPool.length)];
     line.innerHTML = `
-      <span>
-        🎀 幸運緞帶 ${i + 1} 號
-      </span>
-      <span
-        class="line-badge"
-        id="badge-${i}"
-      >
-        ？ 個字
-      </span>
+      <span>🎀 幸運緞帶 ${i + 1} 號</span>
+      <span class="line-badge" id="badge-${i}">？ 個字</span>
     `;
     line.onclick = function() {
-      if (
-        line.classList.contains("revealed")
-      ) return;
+      if (line.classList.contains("revealed")) return;
       line.classList.add("revealed");
-      document.getElementById(
-        `badge-${i}`
-      ).textContent =
-        words === 0
-          ? "休息！"
-          : `${words} 個字`;
-      showResult(
-        document.getElementById(
-          "ribbonResult"
-        ),
-        words
-      );
+      document.getElementById(`badge-${i}`).textContent = (words === 0 ? "休息！" : `${words} 個字`);
+      showResult(document.getElementById("ribbonResult"), words);
     };
     maze.appendChild(line);
   }
 }
 createRibbons();
+
 /* =====================================================
    4. 打怪
 ===================================================== */
 const monsterMaxHP = 30;
 let monsterHP = 30;
+
 function attackByInput() {
-  const input =
-    document.getElementById(
-      "monsterInput"
-    );
-  const words =
-    Number(input.value);
-  if (
-    !Number.isFinite(words) ||
-    words < 0
-  ) {
+  const input = document.getElementById("monsterInput");
+  const words = Number(input.value);
+  if (!Number.isFinite(words) || words < 0) {
     alert("請輸入 0 或正整數喔！");
     return;
   }
   input.value = "";
   if (words === 0) {
-    document.getElementById(
-      "monsterResult"
-    ).innerHTML =
-      "🍀 幸運休息站！<br>" +
-      "<strong>休息 1 分鐘，不攻擊怪獸 🎉</strong>";
+    document.getElementById("monsterResult").innerHTML =
+      "🍀 幸運休息站！<br><strong>休息 1 分鐘，不攻擊怪獸 🎉</strong>";
     return;
   }
   if (monsterHP <= 0) return;
   monsterHP -= words;
-  if (monsterHP < 0) {
-    monsterHP = 0;
-  }
-  document.getElementById(
-    "hpText"
-  ).textContent = monsterHP;
-  document.getElementById(
-    "hpBar"
-  ).style.width =
-    ((monsterHP / monsterMaxHP) * 100) +
-    "%";
-  const monster =
-    document.getElementById("monster");
+  if (monsterHP < 0) monsterHP = 0;
+
+  document.getElementById("hpText").textContent = monsterHP;
+  document.getElementById("hpBar").style.width = ((monsterHP / monsterMaxHP) * 100) + "%";
+
+  const monster = document.getElementById("monster");
   monster.classList.remove("hit");
   void monster.offsetWidth;
   monster.classList.add("hit");
+
   if (monsterHP === 0) {
     monster.textContent = "💥";
-    document.getElementById(
-      "monsterResult"
-    ).innerHTML =
-      `🎉 <strong>太強了！</strong><br>
-       這次寫了 ${words} 個字，怪獸被擊敗了！🏆`;
+    document.getElementById("monsterResult").innerHTML =
+      `🎉 <strong>太強了！</strong><br>這次寫了 ${words} 個字，怪獸被擊敗了！🏆`;
   } else {
-    document.getElementById(
-      "monsterResult"
-    ).innerHTML =
-      `⚔️ 這次寫了 ${words} 個字！<br>
-       造成 ${words} 點傷害！<br>
-       怪獸還剩 ${monsterHP} 點體力！`;
+    document.getElementById("monsterResult").innerHTML =
+      `⚔️ 這次寫了 ${words} 個字！<br>造成 ${words} 點傷害！<br>怪獸還剩 ${monsterHP} 點體力！`;
   }
 }
+
 function resetMonster() {
   monsterHP = monsterMaxHP;
-  document.getElementById(
-    "hpText"
-  ).textContent = monsterMaxHP;
-  document.getElementById(
-    "hpBar"
-  ).style.width = "100%";
-  document.getElementById(
-    "monster"
-  ).textContent = "🐲";
-  document.getElementById(
-    "monsterResult"
-  ).innerHTML =
-    "💪 寫幾個字，就造成幾點傷害！";
+  document.getElementById("hpText").textContent = monsterMaxHP;
+  document.getElementById("hpBar").style.width = "100%";
+  document.getElementById("monster").textContent = "🐲";
+  document.getElementById("monsterResult").innerHTML = "💪 寫幾個字，就造成幾點傷害！";
 }
+
 /* =====================================================
-   5. 台北到南部火車
+   5. 小動物養成
 ===================================================== */
-/*
-  每寫滿 5 個字，火車前進一站。
-  路線：
-  台北 → 新竹 → 台中 → 嘉義 → 高雄
-  需要累積 20 個字抵達高雄。
-  如果一次輸入 7 個字：
-  - 累積 7 字
-  - 火車前進 1 站
-  - 剩下的 2 字會保留在累積字數中
-*/
-const trainWordsPerStation = 5;
-const trainStations = [
-  "台北",
-  "新竹",
-  "台中",
-  "嘉義",
-  "高雄"
-];
-const trainTargetWords =
-  trainWordsPerStation *
-  (trainStations.length - 1);
-let trainWords = 0;
-function trainByInput() {
-  const input =
-    document.getElementById(
-      "trainInput"
-    );
-  const words =
-    Number(input.value);
-  if (
-    !Number.isFinite(words) ||
-    words < 0
-  ) {
-    alert("請輸入 0 或正整數喔！");
-    return;
-  }
-  input.value = "";
-  if (words === 0) {
-    document.getElementById(
-      "trainResult"
-    ).innerHTML =
-      "🍀 幸運休息站！<br>" +
-      "<strong>休息 1 分鐘，火車暫停一下 🚂</strong>";
-    return;
-  }
-  if (
-    trainWords >= trainTargetWords
-  ) {
-    document.getElementById(
-      "trainResult"
-    ).innerHTML =
-      "🏆 火車已經抵達南部高雄站！";
-    return;
-  }
-  trainWords += words;
-  if (
-    trainWords > trainTargetWords
-  ) {
-    trainWords = trainTargetWords;
-  }
-  const progress =
-    trainWords / trainTargetWords;
-  const train =
-    document.getElementById("train");
-  train.style.left =
-    (2 + progress * 86) + "%";
-  const stationIndex =
-    Math.floor(
-      trainWords / trainWordsPerStation
-    );
-  if (
-    trainWords >= trainTargetWords
-  ) {
-    document.getElementById(
-      "trainResult"
-    ).innerHTML =
-      `🏆 <strong>抵達高雄南部站！</strong><br>
-       累積寫了 ${trainWords} 個字，台北到南部完成！🎉`;
-  } else {
-    const currentStation =
-      trainStations[
-        Math.min(
-          stationIndex,
-          trainStations.length - 1
-        )
-      ];
-    const nextStation =
-      trainStations[
-        Math.min(
-          stationIndex + 1,
-          trainStations.length - 1
-        )
-      ];
-    const remaining =
-      trainWordsPerStation -
-      (trainWords % trainWordsPerStation);
-    document.getElementById(
-      "trainResult"
-    ).innerHTML =
-      `🚂 這次寫了 ${words} 個字！<br>
-       火車目前在「${currentStation}」附近。<br>
-       累積 ${trainWords} / ${trainTargetWords} 字，
-       再寫 ${remaining} 個字前往「${nextStation}」！`;
-  }
-}
-function resetTrain() {
-  trainWords = 0;
-  document.getElementById(
-    "train"
-  ).style.left = "2%";
-  document.getElementById(
-    "trainResult"
-  ).innerHTML =
-    "🏁 火車準備從台北出發！";
-}
-/* =====================================================
-   6. 小動物養成
-===================================================== */
-const pets = [
-  "🥚",
-  "🐣",
-  "🐥",
-  "🐤",
-  "🐦",
-  "🦜"
-];
+const pets = ["🥚", "🐣", "🐥", "🐤", "🐦", "🦜"];
 const petMessages = [
   "再寫幾個字，就可以孵化小蛋！",
   "太棒了！小雞破殼出生了！🌱",
@@ -1170,156 +707,73 @@ const petMessages = [
   "羽毛變漂亮了，快要完全長大囉！✨",
   "🎉 恭喜！小夥伴完全長大成熟了！"
 ];
-const petFood = [
-  "🥚",
-  "🍎",
-  "🥕",
-  "🍓",
-  "🌽",
-  "🍉"
-];
+const petFood = ["🥚", "🍎", "🥕", "🍓", "🌽", "🍉"];
 const petMaxWords = 50;
 let totalPetWords = 0;
+
 function updatePetStage() {
-  let stage =
-    Math.floor(
-      totalPetWords / 10
-    );
-  if (stage > 5) {
-    stage = 5;
-  }
-  document.getElementById(
-    "pet"
-  ).textContent =
-    pets[stage];
-  document.getElementById(
-    "petMessage"
-  ).textContent =
-    petMessages[stage];
-  document.getElementById(
-    "petWords"
-  ).textContent =
-    totalPetWords;
-  const progress =
-    Math.min(
-      totalPetWords / petMaxWords * 100,
-      100
-    );
-  document.getElementById(
-    "petProgress"
-  ).style.width =
-    progress + "%";
+  let stage = Math.floor(totalPetWords / 10);
+  if (stage > 5) stage = 5;
+
+  document.getElementById("pet").textContent = pets[stage];
+  document.getElementById("petMessage").textContent = petMessages[stage];
+  document.getElementById("petWords").textContent = totalPetWords;
+  const progress = Math.min((totalPetWords / petMaxWords) * 100, 100);
+  document.getElementById("petProgress").style.width = progress + "%";
 }
+
 function feedPetByInput() {
-  const input =
-    document.getElementById(
-      "petInput"
-    );
-  const words =
-    Number(input.value);
-  if (
-    !Number.isFinite(words) ||
-    words < 0
-  ) {
+  const input = document.getElementById("petInput");
+  const words = Number(input.value);
+  if (!Number.isFinite(words) || words < 0) {
     alert("請輸入 0 或正整數喔！");
     return;
   }
   input.value = "";
   if (words === 0) {
-    document.getElementById(
-      "petResult"
-    ).innerHTML =
-      "🍀 幸運休息站！<br>" +
-      "<strong>休息 1 分鐘，小夥伴陪你一起休息 🐣</strong>";
+    document.getElementById("petResult").innerHTML =
+      "🍀 幸運休息站！<br><strong>休息 1 分鐘，小夥伴陪你一起休息 🐣</strong>";
     return;
   }
-  if (
-    totalPetWords >= petMaxWords
-  ) {
-    document.getElementById(
-      "petResult"
-    ).innerHTML =
-      "🏆 小夥伴已經完全長大了！";
+  if (totalPetWords >= petMaxWords) {
+    document.getElementById("petResult").innerHTML = "🏆 小夥伴已經完全長大了！";
     return;
   }
+
   totalPetWords += words;
-  if (
-    totalPetWords > petMaxWords
-  ) {
-    totalPetWords = petMaxWords;
-  }
+  if (totalPetWords > petMaxWords) totalPetWords = petMaxWords;
   updatePetStage();
-  const stage =
-    Math.min(
-      Math.floor(
-        totalPetWords / 10
-      ),
-      5
-    );
-  const food =
-    petFood[stage];
-  if (
-    totalPetWords >= petMaxWords
-  ) {
-    document.getElementById(
-      "petResult"
-    ).innerHTML =
-      `🎉 ${food} 這次寫了 ${words} 個字！<br>
-       累積 ${totalPetWords} 個字！<br>
-       <strong>小夥伴完全長大了！🌟</strong>`;
+
+  const stage = Math.min(Math.floor(totalPetWords / 10), 5);
+  const food = petFood[stage];
+
+  if (totalPetWords >= petMaxWords) {
+    document.getElementById("petResult").innerHTML =
+      `🎉 ${food} 這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br><strong>小夥伴完全長大了！🌟</strong>`;
   } else {
-    const nextTarget =
-      (stage + 1) * 10;
-    document.getElementById(
-      "petResult"
-    ).innerHTML =
-      `${food} 這次寫了 ${words} 個字！<br>
-       累積 ${totalPetWords} 個字！<br>
-       再寫 ${nextTarget - totalPetWords} 個字，小夥伴就會長大囉！`;
+    const nextTarget = (stage + 1) * 10;
+    document.getElementById("petResult").innerHTML =
+      `${food} 這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br>再寫 ${nextTarget - totalPetWords} 個字，小夥伴就會長大囉！`;
   }
 }
+
 function resetPet() {
   totalPetWords = 0;
-  document.getElementById(
-    "petInput"
-  ).value = "";
+  document.getElementById("petInput").value = "";
   updatePetStage();
-  document.getElementById(
-    "petResult"
-  ).innerHTML =
-    "🌱 寫幾個字來餵食小夥伴吧！";
+  document.getElementById("petResult").innerHTML = "🌱 寫幾個字來餵食小夥伴吧！";
 }
+
 /* =====================================================
-   Enter 鍵也可以送出
+   Enter 鍵支援
 ===================================================== */
-document.addEventListener(
-  "keydown",
-  function(event) {
-    if (
-      event.key !== "Enter"
-    ) return;
-    const activeGame =
-      document.querySelector(
-        ".game.active"
-      );
-    if (!activeGame) return;
-    if (
-      activeGame.id === "monsterGame"
-    ) {
-      attackByInput();
-    }
-    if (
-      activeGame.id === "trainGame"
-    ) {
-      trainByInput();
-    }
-    if (
-      activeGame.id === "petGame"
-    ) {
-      feedPetByInput();
-    }
-  }
-);
+document.addEventListener("keydown", function(event) {
+  if (event.key !== "Enter") return;
+  const activeGame = document.querySelector(".game.active");
+  if (!activeGame) return;
+  if (activeGame.id === "monsterGame") attackByInput();
+  if (activeGame.id === "petGame") feedPetByInput();
+});
 </script>
 </body>
 </html>
