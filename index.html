@@ -472,7 +472,7 @@ button {
       <div class="hp-bar"><div class="hp" id="hpBar"></div></div>
     </div>
     <div class="word-input-area">
-      <div class="word-input-label">✏️ 這次寫了幾個字？</div>
+      <div class="word-input-label">✏️️ 這次寫了幾個字？</div>
       <input id="monsterInput" class="word-input" type="number" min="0" placeholder="例如 8">
       <button class="submit-word-btn" onclick="attackByInput()">⚔️ 攻擊</button>
     </div>
@@ -482,8 +482,8 @@ button {
 
   <!-- 5. 小動物養成 -->
   <section id="petGame" class="game">
-    <h2>🐣 小動物養成</h2>
-    <div class="description">累積寫字，小雞就會一步一步長大成帥氣大公雞！</div>
+    <h2>🐣 小雞養成</h2>
+    <div class="description">累積寫字餵飽小雞，一步步長成帥氣大公雞！</div>
     <div class="pet" id="pet">🥚</div>
     <div class="pet-message" id="petMessage">累積寫滿 10 個字，就可以孵化小蛋！</div>
     <div class="progress-box">
@@ -493,7 +493,7 @@ button {
     <div class="word-input-area">
       <div class="word-input-label">✏️ 這次寫了幾個字？</div>
       <input id="petInput" class="word-input" type="number" min="0" placeholder="例如 7">
-      <button class="submit-word-btn" onclick="feedPetByInput()">🥕 餵食</button>
+      <button class="submit-word-btn" onclick="feedPetByInput()">🌾 餵食穀物</button>
     </div>
     <div class="result" id="petResult">🌱 寫幾個字來餵食小夥伴吧！</div>
     <button class="reset-btn" onclick="resetPet()">🔄 重新孵蛋</button>
@@ -688,7 +688,7 @@ function resetMonster() {
 }
 
 /* =====================================================
-   5. 小動物養成（咕咕雞路線）
+   5. 小動物養成（小雞吃穀物路線）
 ===================================================== */
 const pets = ["🥚", "🐣", "🐥", "🐤", "🐔", "🐓"];
 const petMessages = [
@@ -699,7 +699,8 @@ const petMessages = [
   "羽翼漸豐，小雞長成大雞囉！✨",
   "🎉 恭喜！小雞完全長大成為霸氣大公雞！🐓"
 ];
-const petFood = ["🥚", "🌾", "🌽", "🐛", "🌾", "✨"];
+// 專為雞設計的健康菜單：蛋 ➔ 穀物碎 ➔ 甜玉米 ➔ 營養小蟲 ➔ 鮮嫩菜葉 ➔ 特級大餐
+const petFood = ["🥚", "🌾 穀物", "🌽 甜玉米", "🐛 肥嫩小蟲", "🥬 翠綠菜葉", "🌟 營養大餐"];
 const petMaxWords = 50;
 let totalPetWords = 0;
 
@@ -741,11 +742,11 @@ function feedPetByInput() {
 
   if (totalPetWords >= petMaxWords) {
     document.getElementById("petResult").innerHTML =
-      `🎉 ${food} 這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br><strong>小雞成功長成大公雞了！🐓🌟</strong>`;
+      `🎉 餵食了 ${food}！這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br><strong>小雞成功長成大公雞了！🐓🌟</strong>`;
   } else {
     const nextTarget = (stage + 1) * 10;
     document.getElementById("petResult").innerHTML =
-      `${food} 這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br>再寫 ${nextTarget - totalPetWords} 個字，小雞就會長大囉！`;
+      `餵食了 ${food}！這次寫了 ${words} 個字！<br>累積 ${totalPetWords} 個字！<br>再寫 ${nextTarget - totalPetWords} 個字，小雞就會長大囉！`;
   }
 }
 
